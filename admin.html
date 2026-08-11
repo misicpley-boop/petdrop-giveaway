@@ -1,0 +1,3 @@
+{% extends "base.html" %}{% block title %}Заявки{% endblock %}{% block content %}
+<div class="admin"><div class="head"><h1>Заявки</h1><a href="/admin/logout">Выйти</a></div><table><tr><th>ID</th><th>Ник</th><th>Питомец</th><th>Статус</th><th>Дата</th><th>Изменить</th></tr>
+{% for x in claims %}<tr><td>#{{x.id}}</td><td>{{x.username}}</td><td>{{x.pet}}</td><td>{{x.status}}</td><td>{{x.created_at}}</td><td><form method="post" action="/admin/status/{{x.id}}"><select name="status">{% for s in ["pending","processing","completed","rejected"] %}<option {% if s==x.status %}selected{% endif %}>{{s}}</option>{% endfor %}</select><button>OK</button></form></td></tr>{% else %}<tr><td colspan="6">Пусто</td></tr>{% endfor %}</table></div>{% endblock %}

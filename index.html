@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block title %}Бесплатные питомцы{% endblock %}{% block content %}
+<section class="hero"><div class="tag">🎁 FREE PET GIVEAWAY</div><h1>Выбери своего<br><span>питомца</span> 🐾</h1>
+<p>Укажи игровой ник и отправь заявку. Никаких паролей Roblox не требуется.</p>
+<div class="grid">{% for p in pets %}<label class="pet"><input type="radio" name="pick" value="{{p}}" form="claim" {% if loop.first %}checked{% endif %}><strong>{{p}}</strong><small>FREE</small></label>{% endfor %}</div>
+<form id="claim" method="post" action="/claim" class="card"><label>Игровой ник</label><input name="username" maxlength="30" placeholder="YourRobloxName" required>
+<input type="hidden" name="pet" id="pet"><button>🎁 Оформить заявку</button><small>Для безопасности сайт не собирает пароли, cookie или коды Roblox.</small></form>
+</section><script>
+const radios=document.querySelectorAll('input[name=pick]'), pet=document.getElementById('pet');
+function sync(){pet.value=document.querySelector('input[name=pick]:checked').value} radios.forEach(r=>r.addEventListener('change',sync)); sync();
+</script>{% endblock %}
